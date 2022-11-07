@@ -3,3 +3,4 @@ node_modules
 .vscode
 .git
 docker-compose.override.yml
+.pnpm-store
