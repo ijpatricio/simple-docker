@@ -1,8 +1,7 @@
 version: "3.9"
 
 volumes:
-  simple-files:
-    external: true
+  mysql_db:
 
 services:
   webapp:
@@ -10,8 +9,23 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: [ "pnpm", "run", "dev" ]
     ports:
       - "80:3000"
     volumes:
-      - ./files:/storage/files
-      - simple-files:/storage/more-files
+      - .:/app
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - mysql_db:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"

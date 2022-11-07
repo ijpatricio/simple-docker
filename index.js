@@ -3,8 +3,7 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    console.log('Request incoming! :)')
-    res.send('Hello Simple Docker!')
+    res.send('Now is Dev Time =)')
 })
 
 app.listen(port, () => {
