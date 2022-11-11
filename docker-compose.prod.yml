@@ -3,7 +3,8 @@ version: "3.9"
 services:
   webapp:
     restart: always
-    image: simple-docker:latest
+    image: ijpatricio/simple-docker:latest
+    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile
